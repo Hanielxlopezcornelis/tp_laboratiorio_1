@@ -1,0 +1,17 @@
+#ifndef MENU_H_
+#define MENU_H_
+
+/// \fn Menu()
+/// \brief la funcion sirve, seleccionar, ingresar, calcular y mostrar los datos de los aeropuestos
+/// \param void
+/// \return retorna un 0
+int Menu(void);
+
+/// \fn Menu()
+/// \brief la funcion sirve, para ingresar los kilometros.
+/// \param void
+/// \return retorna un numero flotante
+float SubMenu(void);
+
+
+#endif /* MENU_H_ */

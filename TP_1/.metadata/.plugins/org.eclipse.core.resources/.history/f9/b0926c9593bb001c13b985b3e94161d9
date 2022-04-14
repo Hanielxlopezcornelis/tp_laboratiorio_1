@@ -1,0 +1,173 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "Menu.h"
+#include "calculos.h"
+
+int Menu(void){
+
+	setbuf(stdout, NULL);
+
+	float kilometrosIngresados = 0;
+	int opcion;
+	int opcionVuelo;
+	float ingreseAeroLineas = 0;
+	float ingreseLatam = 0;
+
+	float kilometrosPredeterminados = 7090;
+	float aeroLineasPredeterminada = 162965;
+	float latamPredeterminada = 159339;
+
+		do{
+
+	    	printf("+=======================================================================+");
+	    	printf("\n|                                  MENU                                 |");
+	    	printf("\n+=======================================================================+");
+	    	printf("\n|   1 - Ingresar Kilómetros: (km = %.2f)                                ", kilometrosIngresados);
+	        printf("\n|   2 - Ingresar Precio de Vuelos: (Aerolíneas = %.2f, Latam = %.2f)    ", ingreseAeroLineas, ingreseLatam);
+	        printf("\n|   3 - Calcular todos los costos.                                      ");
+	        printf("\n|   4 - Informar Resultados.                                            ");
+	        printf("\n|   5 - Carga forzada de datos.                                         ");
+	        printf("\n|   6 - Salir.                                                          ");
+	    	printf("\n+=======================================================================+");
+	    	printf("\n|   Respuesta: ");
+	        scanf("%d", &opcion);
+	        printf("+=======================================================================+\n\n");
+
+
+	        switch (opcion)
+	        {
+	            case 1:
+
+	            	kilometrosIngresados = SubMenu();
+
+	            		break;
+
+	            case 2:
+
+	            	do{
+
+	            				printf("\n+=======================================================================+");
+	            				printf("\n|                               SUB MENU                                |");
+	            				printf("\n+=======================================================================+");
+	            				printf("\n|            >>>>>   Seleccione la Agencia de Viajes   <<<<<            |");
+	            				printf("\n+=======================================================================+");
+	            				printf("\n|   1 - Volar con AeroLineas.                                           |");
+	            				printf("\n|   2 - Volar con Latam.                                                |");
+	            				printf("\n+=======================================================================+");
+	            				printf("\n|   Respuesta: ");
+	            				scanf("%d", &opcionVuelo);
+	            				printf("+=======================================================================+\n\n");
+
+	            				switch(opcionVuelo){
+
+	            					case 1:
+
+	            						printf("\n+=======================================================================+");
+	            						printf("\n|                               SUB MENU                                |");
+	            						printf("\n+=======================================================================+");
+	            					  	printf("\n|   - Precio vuelo AeroLienas: ");
+	            					  	scanf("%f", &ingreseAeroLineas);
+	            						printf("+=======================================================================+\n\n\n");
+
+	            						break;
+
+	            					 case 2:
+
+	            						 printf("\n+=======================================================================+");
+	            						 printf("\n|                               SUB MENU                                |");
+	            						 printf("\n+=======================================================================+");
+	            						 printf("\n|   - Precio vuelo Latam: ");
+	            						 scanf("%f", &ingreseLatam);
+	            						 printf("+=======================================================================+\n\n\n");
+
+	            						break;
+
+	            				}
+
+	            		}while(opcionVuelo != 1 && opcionVuelo != 2);
+
+	                    break;
+
+	            case 3:
+
+	            	 printf("\n+=======================================================================+");
+	            	 printf("\n|   a) Tarjeta de debito (descuento 10 % )");
+	            	 printf("\n|   b) Tarjeta de credito (interes 25 % )");
+	            	 printf("\n|   c) Bitcoin (1BTC -> 4606954.55 Pesos Argentinos)");
+	            	 printf("\n|   d) Mostrar precio por km (precio unitario)");
+	            	 printf("\n|   e) Mostrar diferencia de precio ingresada (Latam - Aerolíneas)");
+	            	 printf("\n+=======================================================================+\n\n\n");
+
+	            		break;
+
+	            case 4:
+
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|                               SUB MENU                                |");
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|                             AeroLineas                                |");
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|   a) Precio con tarjeta de débito: $ %.2f", CalcularDebito(ingreseAeroLineas));
+	            	printf("\n|   b) Precio con tarjeta de crédito: $ %.2f", CalcularCredito(ingreseAeroLineas));
+	            	printf("\n|   c) Precio pagando con bitcoin: %f BTC", CalcularBitcoin(ingreseAeroLineas));
+	            	printf("\n|   d) Precio unitario: $ %.2f", CalcularUnitario(kilometrosIngresados, ingreseAeroLineas));
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|                                Latam                                  |");
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|   a) Precio con tarjeta de débito: $ %.2f", CalcularDebito(ingreseLatam));
+	            	printf("\n|   b) Precio con tarjeta de crédito: $ %.2f", CalcularCredito(ingreseLatam));
+	            	printf("\n|   c) Precio pagando con bitcoin: %f BTC", CalcularBitcoin(ingreseLatam));
+	            	printf("\n|   d) Precio unitario: $ %.2f", CalcularUnitario(kilometrosIngresados, ingreseLatam));
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|   La diferencia de precio es: $ %.2f", CalcularDiferencia(ingreseAeroLineas, ingreseLatam));
+	            	printf("\n+=======================================================================+\n\n\n");
+
+	            		break;
+
+	            case 5:
+
+	            	kilometrosIngresados = kilometrosPredeterminados;
+	            	ingreseAeroLineas = aeroLineasPredeterminada;
+	            	ingreseLatam = latamPredeterminada;
+
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|   Kilómetro Ingresados: %.2f km", kilometrosIngresados);
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|   Precio AeroLineas: $ %.2f", ingreseAeroLineas);
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|   a) Precio con tarjeta de débito: $ %.2f",CalcularDebito(ingreseAeroLineas));
+	            	printf("\n|   b) Precio con tarjeta de crédito: $ %.2f",CalcularCredito(ingreseAeroLineas));
+	            	printf("\n|   c) Precio pagando con bitcoin: $ %f",CalcularBitcoin(ingreseAeroLineas));
+	            	printf("\n|   d) Precio unitario: $ %.2f",CalcularUnitario(kilometrosIngresados, ingreseAeroLineas));
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|   Precio Latam: $ %.2f", ingreseLatam);
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|   a) Precio con tarjeta de débito: $ %.2f",CalcularDebito(ingreseLatam));
+	            	printf("\n|   b) Precio con tarjeta de crédito: $ %.2f",CalcularCredito(ingreseLatam));
+	            	printf("\n|   c) Precio pagando con bitcoin: $ %f",CalcularBitcoin(ingreseLatam));
+	            	printf("\n|   d) Precio unitario: $ %.2f",CalcularUnitario(kilometrosIngresados, ingreseLatam));
+	            	printf("\n+=======================================================================+");
+	            	printf("\n|   La diferencia de precio es: $ %.2f",CalcularDiferencia(ingreseAeroLineas, ingreseLatam));
+	                printf("\n+=======================================================================+\n\n\n");
+
+	        }
+
+	    }while (opcion != 6);
+
+	return 0;
+
+}
+
+float SubMenu(void){
+
+	float ingreseKilometros;
+
+	printf("\n+=======================================================================+");
+	printf("\n|                               SUB MENU                                |");
+	printf("\n+=======================================================================+");
+   	printf("\n|   Ingrese los KMs: ");
+	scanf("%f", &ingreseKilometros);
+	printf("+=======================================================================+\n\n\n");
+
+	return ingreseKilometros;
+}

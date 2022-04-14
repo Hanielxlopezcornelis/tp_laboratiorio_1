@@ -1,0 +1,14 @@
+#ifndef CALCULOS_H_
+#define CALCULOS_H_
+
+float CalcularDebito(float numero);
+
+float CalcularCredito(float numero);
+
+float CalcularBitcoin(float numero);
+
+float CalcularUnitario(float kilometros, float numero);
+
+float CalcularDiferencia(float aeroLineas, float latam);
+
+#endif /* CALCULOS_H_ */

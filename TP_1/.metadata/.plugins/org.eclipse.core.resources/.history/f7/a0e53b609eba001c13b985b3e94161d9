@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "Menu.h"
+#include "calculos.h"
+
+#define BITCOIN 4606954.55
+
+float CalcularDebito(float y){
+
+	float descuento;
+	float precioDescuento;
+
+	descuento = (y * 10) / 100;
+	precioDescuento = y - descuento;
+
+	return precioDescuento;
+
+}
+
+float CalcularCredito(float z){
+
+	float aumento;
+	float precioInteres;
+
+	aumento = (z * 25) / 100;
+	precioInteres = z - aumento;
+
+	return precioInteres;
+
+}

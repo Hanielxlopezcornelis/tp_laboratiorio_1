@@ -1,0 +1,14 @@
+#ifndef CALCULOS_H_
+#define CALCULOS_H_
+
+int CalcularDebito();
+
+int CalcularCredito();
+
+int CalcularBitcoin();
+
+int CalcularUnitario();
+
+int CalcularDiferencia();
+
+#endif /* CALCULOS_H_ */

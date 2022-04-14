@@ -1,0 +1,23 @@
+/*
+ * Menu.h
+ *
+ *  Created on: 12 abr. 2022
+ *      Author: Haniel
+ */
+
+#ifndef MENU_H_
+#define MENU_H_
+/**
+ *
+ * @return
+ */
+int Menu(void);
+
+/**
+ *
+ * @return
+ */
+float SubMenu(void);
+
+
+#endif /* MENU_H_ */
